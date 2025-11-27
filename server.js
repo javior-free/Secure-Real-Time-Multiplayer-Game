@@ -5,8 +5,10 @@ const http = require('http');
 const helmet = require('helmet');
 const fccTestingRoutes = require('./routes/fcctesting.js');
 const runner = require('./test-runner');
+const cors = require('cors');
 
 const app = express();
+app.use(cors({ origin: '*' }));
 const server = http.createServer(app);
 const io = require('socket.io')(server, {
   cors: { origin: '*', methods: ['GET', 'POST'] }
